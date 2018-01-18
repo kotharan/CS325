@@ -1,8 +1,8 @@
 ######################################################################################
 #
-#	Author: Ayush Choudhury, Anand, Munisha
+#	
 #
-#	Title: Group Assignment 1
+#	 Assignment 1
 #
 #	Description: This program reads in one file giving values
 #		for m, n, and k. Then the program reads in m text
