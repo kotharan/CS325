@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
 
 ifstream infile("data.txt");
@@ -75,17 +76,17 @@ int main(){
 
     char str[255];
     ifstream file("data.txt");
-    if(file.is_open())
-    {
 
-       for(int i = 0 ; i<5; i++)
-       {
-           file >> str;
-           cout<<str[0];
-       }
-       cout<<endl;
+//-----------------------------------------------------------------------------
+vector<int> arr;
+int n = 0;
+ while(!file.eof())
+    {
+        file >> arr.push_back(n);
+        n++;
     }
 
+//-----------------------------------------------------------------------------
 
     int arr[] = {2,5,6,3,3,5,3,3};
     int size = sizeof(arr)/sizeof(arr[1]);
