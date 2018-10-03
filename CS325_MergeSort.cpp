@@ -1,21 +1,17 @@
 #include <iostream>
-#include <fstream>
-#include <string>
 #include <vector>
-#include <algorithm>
+#include <fstream>
+
 using namespace std;
 
-ifstream infile("data.txt");
-string myArray[5];
-vector<int> brr;
-void merge(vector<int> &arr,int s , int e)
+vector<int> arr;
+
+void merge(vector<int>& arr,int s , int e)
 {
     int mid = (s+e)/2;
     int i = s;
     int j = mid+1;
     int k = s;
-
-
 
     /* create temp arrays */
     int temp[100];
@@ -49,11 +45,10 @@ void merge(vector<int> &arr,int s , int e)
     }
 
 
-
 }
 
 
-void mergeSort(vector<int> &arr, int s , int e)
+void mergeSort(vector<int>& arr, int s , int e)
 {
 
  if(s>=e)
@@ -74,42 +69,32 @@ void mergeSort(vector<int> &arr, int s , int e)
 
 int main(){
 
-    if(!infile)
-    {
-        cout<< "File does not exist" <<endl;
-    }
 
-    char str[255];
     ifstream file("data.txt");
-
-//-----------------------------------------------------------------------------
 
     int a;
     while (file >> a)
     {
-        brr.push_back(a);
+        arr.push_back(a);
 
     }
 
+    int size = arr[0];
+    arr.erase(arr.begin());
 
-//-----------------------------------------------------------------------------
-
-
-    int size = brr[0];
-
-    int start = 1;
-    int end = brr[0];
+    int start = 0;
+    int end = size;
 
 
-    mergeSort(brr,start,end-1);
+    mergeSort(arr,start,end-1);
 
-    cout<<"MergeSort::"<<endl;
-    sort(brr.begin()+1,brr.end());
-    for(int i= 1 ; i<=size ; i++)
+    ofstream myfile;
+    myfile.open ("insert.out");
+    for (int i=0; i < size; i++)
     {
-        cout<<brr[i]<<" ";
+    myfile << arr[i]<<" ";
     }
-
+    myfile.close();
 
     return 0;
 }
