@@ -3,6 +3,7 @@
 #include <iostream> 
 #include <vector>
 #include <fstream>
+#include <time.h>
 
 using namespace std; 
 vector<int> arr ;
@@ -44,10 +45,11 @@ void printFinal(vector<int>& arr, int n)
 
 }
 
+  
 // Main Code which passes the 
 int main() 
 { 
-    
+    clock_t tStart = clock();
 
     if(!infile)
     {
@@ -73,6 +75,6 @@ int main()
     // Print the Output in stooge.out
     printFinal(arr,n);
     
-  
+    cout << "Time taken: " << ((double)(clock() - tStart)/CLOCKS_PER_SEC);
     return 0; 
 } 
