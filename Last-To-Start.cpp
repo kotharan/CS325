@@ -9,6 +9,20 @@ using namespace std;
 ifstream infile("act.txt");
 vector<int> brr;
 
+void lastToStart(int n)
+{
+    int k = 0;
+   for( k = 0 ; k < n*3 ; k++)
+   {
+        if(k%3==0)
+        {
+            cout<<brr[k];
+
+        }else{
+        continue;}
+
+   }
+}
 
 int main()
 {
@@ -33,7 +47,7 @@ int main()
     int n =  brr[0];
 	brr.erase(brr.begin());
 
-
+    lastToStart(n);
 
 	return 0;
 }
