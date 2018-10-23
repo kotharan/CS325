@@ -12,11 +12,11 @@ vector<int> brr;
 void lastToStart(int n)
 {
     int k = 0;
-   for( k = 0 ; k < n*3 ; k++)
+   for( k = 0 ; k < n*n ; k++)
    {
         if(k%3==0)
         {
-            cout<<brr[k];
+            cout<<brr[k];  // Prints the activity number [the first element of each activity]
 
         }else{
         continue;}
