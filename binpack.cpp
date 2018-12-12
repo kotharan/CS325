@@ -5,7 +5,7 @@ Done By>> Anand Kothari
 
 " Reading Input from bin.txt " 
 
-In the bin packing problem, itemsof different weights (or sizes) must be packed into a finite number of bins each with the capacity Cin a way that minimizes the number of bins used.The decision version of the bin packing problem(deciding if objects will fit into <= k bins) isNP-complete.  There is no known polynomial time algorithm to solve the optimization version of the bin packing problem.  In this homework you will be examining three greedy approximation algorithms to solve the bin packing problem.
+In the bin packing problem, items of different weights (or sizes) must be packed into a finite number of bins each with the capacity Cin a way that minimizes the number of bins used.The decision version of the bin packing problem(deciding if objects will fit into <= k bins) isNP-complete.  There is no known polynomial time algorithm to solve the optimization version of the bin packing problem.  In this homework you will be examining three greedy approximation algorithms to solve the bin packing problem.
 
 First-Fit:Put each item as you come to it into the first (earliest opened) bin into which it fits.  If there is no available bin then open a new bin.
 
@@ -66,6 +66,44 @@ int firstFit(int capacity, vector<int> item_Weights)
         }
 
         if (canFit == true)
+        {
+            binCapLeft.push_back(capacity);
+            binCapLeft[binCapLeft.size() - 1] -= item_Weights[i];
+        }
+    }
+
+    return binCapLeft.size();
+}
+
+int bestFit(int capacity, vector<int> item_Weights)
+{
+    vector<int> binCapLeft;
+    binCapLeft.push_back(capacity);
+    vector<int> bestbin;
+
+    for (int i = 0; i < item_Weights.size(); i++)
+
+    {
+        bool cantFit = true;
+
+        for (int j = 0; j < binCapLeft.size(); j++)
+        {
+            while (item_Weights[i] <= binCapLeft[j])
+            {
+                bestbin.push_back(j);
+                i++;
+            }
+
+            if (bestbin.size() >= 1)
+            {
+                int k = max(bestbin.value);
+                binCapLeft[k] -= item_Weights[i];
+                cantFit = false;
+                break;
+            }
+        }
+
+        if (cantFit == true)
         {
             binCapLeft.push_back(capacity);
             binCapLeft[binCapLeft.size() - 1] -= item_Weights[i];
